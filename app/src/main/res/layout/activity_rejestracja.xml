@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Rejestracja">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="58dp"
+        android:layout_marginRight="58dp"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:id="@+id/imie_rej"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Imie"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="34sp"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/telefon_rej"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefon"
+            android:imeOptions="actionUnspecified"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="34sp"/>
+
+        <EditText
+            android:id="@+id/haslo_rej"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hasło"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="34sp"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/PIN_rej"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PIN"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="34sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="139dp"
+        android:text="Rejestracja"
+        android:textAlignment="center"
+        android:textSize="46sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/bt_rejestruj"
+        android:layout_width="135dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="-432dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="40dp"
+        android:text="Zarejestruj"/>
+</RelativeLayout>

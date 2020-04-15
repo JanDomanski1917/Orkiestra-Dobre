@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#333536</color>
+
+    <color name="overlayBackground">#0909FF</color>
+    <color name="overlaActionBar">#0e0d0e</color>
+
+    <color name="glow">#02897c</color>
+    <color name="zam">#111111</color>
+
+    <color name="btnlog">#FF9900</color>
+    <color name="btnreg">#0066FF</color>
+
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "303079532134",
+    "firebase_url": "https://orkiestra-b0bf8.firebaseio.com",
+    "project_id": "orkiestra-b0bf8",
+    "storage_bucket": "orkiestra-b0bf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303079532134:android:e40ecf37a0b39543ef6fa7",
+        "android_client_info": {
+          "package_name": "com.example.orkiestra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303079532134-h04q1dcalanngr3ibavdfd569se7dogu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.orkiestra",
+            "certificate_hash": "80eddd147c002dd8a098a7cf957d8947e47ce1e5"
+          }
+        },
+        {
+          "client_id": "303079532134-ih9k4kjneunvhmcqeo6af3ubo2tim6fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbiE06dGD6Fzavndm6nNtTlT_MJEwnogA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303079532134-ih9k4kjneunvhmcqeo6af3ubo2tim6fe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
