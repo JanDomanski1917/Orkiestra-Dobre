@@ -23,22 +23,22 @@
             android:id="@+id/bt_proba"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Proba"
-            android:onClick="Proba"/>
+            android:onClick="Proba"
+            android:text="PROBA" />
 
         <Button
             android:id="@+id/bt_wystep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wystep"
-            android:onClick="Wystep"/>
+            android:onClick="Wystep"
+            android:text="WYSTEP" />
 
         <Button
             android:id="@+id/bt_zebranie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zebranie"
-            android:onClick="Zebranie"/>
+            android:onClick="Zebranie"
+            android:text="ZEBRANIE" />
 
     </LinearLayout>
 

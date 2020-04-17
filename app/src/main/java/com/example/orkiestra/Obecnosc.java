@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Obecnosc extends AppCompatActivity {
 
@@ -29,7 +32,7 @@ public class Obecnosc extends AppCompatActivity {
     TextView tv_data, tv_nazwa, tv_ilosc;
 
     FirebaseAuth firebaseAuth;
-    int suma =0;
+    int suma = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class Obecnosc extends AppCompatActivity {
         int rok = kal.get(Calendar.YEAR);
         int miesiac = kal.get(Calendar.MONTH);
         int dzien = kal.get(Calendar.DAY_OF_MONTH);
-        String data = dzien + "-" + miesiac + 1 + "-" + rok;
+        String data = dzien + "-" + (miesiac + 1) + "-" + rok;
         tv_data.setText(data);
 
         tv_nazwa = (TextView) findViewById(R.id.tVSpotkanie);
@@ -58,54 +61,81 @@ public class Obecnosc extends AppCompatActivity {
 
         // databaseReference = FirebaseDatabase.getInstance().getReference("Attendence");
 // FROM LOACATION BUT REMBER TO GIVE IT INSIDE LOOOP ELSE WILL COME BACK
-        final DatabaseReference ref = database.getReference("Member");
+        final DatabaseReference memberReference = database.getReference("Member");
 
         // final     DatabaseReference fromPath = FirebaseDatabase.getInstance().getReference("students");
 
-        ref.orderByChild("nazwisko").equalTo(nazwisko.getText().toString());
+        memberReference.orderByChild("nazwisko").equalTo(nazwisko.getText().toString());
 //....................... TO LOCATION
-        final   DatabaseReference toPath = database.getReference("Attendence").child(tv_nazwa.getText().toString())
-                .child("Data = "+data).child(nazwisko.getText().toString());
+        final DatabaseReference attendanceReference = database.getReference("Attendence").child(tv_nazwa.getText().toString())
+                .child("Data = " + data).child(nazwisko.getText().toString());
 
 
-       btn_sprawdz.setOnClickListener(new View.OnClickListener() {
+        btn_sprawdz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ref.orderByChild("nazwisko").equalTo(nazwisko.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+                memberReference.orderByChild("nazwisko").equalTo(nazwisko.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()){
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
 
-                            //.........................
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("nazwisko", nazwisko.getText().toString());
 
-                            ValueEventListener valueEventListener = new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    toPath.child(nazwisko.getText().toString()).setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                            attendanceReference.child(nazwisko.getText().toString())
+                                    .updateChildren(map, new DatabaseReference.CompletionListener() {
                                         @Override
-                                        public void onComplete(Task<Void> task) {
-                                            if (task.isComplete()) {
-                                                nazwisko.setText("");
-                                                //  Toast.makeText(TakeAttendence.this,"Attendence Accepted",Toast.LENGTH_SHORT).show();
-
-                                            } else {
-
-                                            }
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            nazwisko.setText("");
                                         }
                                     });
-                                }
+//                                    .setValue(nazwisko.getText().toString(), new OnCompleteListener<String>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task task) {
+//                                            nazwisko.setText("");
+//                                        }
+//                                    });
 
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {}
-                            };
-                            ref.child(tv_nazwa.getText().toString()).child(nazwisko.getText().toString()).addListenerForSingleValueEvent(valueEventListener);
+
+
+
+//                            //.........................
+//
+//                            ValueEventListener valueEventListener = new ValueEventListener() {
+//                                @Override
+//                                public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//
+//                                    attendanceReference.child(nazwisko.getText().toString())
+//                                            .setValue(dataSnapshot.getValue())
+//                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(Task<Void> task) {
+//                                            if (task.isComplete()) {
+//                                                nazwisko.setText("");
+//                                                //  Toast.makeText(TakeAttendence.this,"Attendence Accepted",Toast.LENGTH_SHORT).show();
+//
+//                                            } else {
+//
+//                                            }
+//                                        }
+//                                    });
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(DatabaseError databaseError) {
+//                                }
+//                            };
+//                            memberReference.child(tv_nazwa.getText().toString())
+//                                    .child(nazwisko.getText().toString())
+//                                    .addListenerForSingleValueEvent(valueEventListener);
 
                             suma = suma + 1;
                             tv_ilosc.setText(String.valueOf(suma));
-                            Toast.makeText(Obecnosc.this,"Attendence Accepted",Toast.LENGTH_SHORT).show();
-                        }else
-                        {
-                            Toast.makeText(Obecnosc.this,"Invalid",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Obecnosc.this, "Attendence Accepted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Obecnosc.this, "Invalid", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -117,9 +147,6 @@ public class Obecnosc extends AppCompatActivity {
                 });
             }
         });
-
-
-
 
 
     }
