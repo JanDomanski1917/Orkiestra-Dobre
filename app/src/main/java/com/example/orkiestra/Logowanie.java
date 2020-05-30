@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,9 @@ public class Logowanie extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference table_user = database.getReference("User");
+
+    SmsManager smsManager = null;
+    String wiadomosc = "Zalogowano do aplikacji Orkiestra Dęta";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,8 @@ public class Logowanie extends AppCompatActivity {
                                 user.setTel(edt_login.getText().toString()); //Set phone
 
                                 if (user.getHaslo().equals(edt_haslo.getText().toString())) {
+                                    smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage(edt_login.getText().toString(),null,wiadomosc,null,null);
                                     Intent homeIntent = new Intent(Logowanie.this, Home.class);
                                     startActivity(homeIntent);
                                     Toast.makeText(getApplicationContext(), "Gotowe", Toast.LENGTH_SHORT).show();

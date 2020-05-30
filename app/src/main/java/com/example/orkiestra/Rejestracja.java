@@ -3,6 +3,7 @@ package com.example.orkiestra;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,9 @@ public class Rejestracja extends AppCompatActivity {
 
     EditText edt_telefon,edt_login, edt_haslo, edt_pin;
     Button btn_rejestruj;
+
+    SmsManager smsManager = null;
+    String wiadomosc = "Zalogowano do aplikacji Orkiestra Dęta";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +60,14 @@ public class Rejestracja extends AppCompatActivity {
                                 mDialog.dismiss();
                                 User user = new User(edt_login.getText().toString(), edt_haslo.getText().toString(), edt_pin.getText().toString());
                                 table_user.child(edt_telefon.getText().toString()).setValue(user);
+                                smsManager = SmsManager.getDefault();
+                                smsManager.sendTextMessage(edt_telefon.getText().toString(),null,wiadomosc,null,null);
                                 Toast.makeText(Rejestracja.this, "Gotowe", Toast.LENGTH_SHORT).show();
                                 finish();
                                 Intent homeIntent = new Intent(Rejestracja.this, Home.class);
                                 Common.currentUser = user;
-                                startActivity(homeIntent); }
+                                startActivity(homeIntent);
+                                }
                         }
 
                         @Override
