@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/pobrane"
         android:label="ORKIESTRA DETA"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/pobrane"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
