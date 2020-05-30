@@ -38,6 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_b"
+            android:shadowColor="#A8A8A8"
             android:onClick="AddCalendarEvent"
             android:text="Dodaj wydarzenie"
             tools:ignore="OnClick"/>
@@ -48,6 +52,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_b"
+            android:shadowColor="#A8A8A8"
             android:text="Wyślij wiadomość"/>
     </LinearLayout>
 </RelativeLayout>

@@ -23,6 +23,10 @@
             android:id="@+id/bt_proba"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:background="@drawable/buttonshape_b"
+            android:shadowColor="#A8A8A8"
             android:onClick="Proba"
             android:text="PROBA" />
 
@@ -30,6 +34,10 @@
             android:id="@+id/bt_wystep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:background="@drawable/buttonshape_b"
+            android:shadowColor="#A8A8A8"
             android:onClick="Wystep"
             android:text="WYSTEP" />
 
@@ -37,6 +45,10 @@
             android:id="@+id/bt_zebranie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:background="@drawable/buttonshape_b"
+            android:shadowColor="#A8A8A8"
             android:onClick="Zebranie"
             android:text="ZEBRANIE" />
 

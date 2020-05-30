@@ -18,16 +18,22 @@
 
         <Button
             android:id="@+id/bt_rejestracja"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="0dp"
+            android:textColor="#FEFFF7"
+            android:textSize="25sp"
+
+            android:background="@drawable/buttonshape_a"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:layout_width="200dp"
             android:text="Rejestracja"/>
 
         <Button
             android:id="@+id/bt_logowanie"
-            android:layout_width="0dp"
+            android:textColor="#FEFFF7"
+            android:textSize="25sp"
+            android:layout_width="200dp"
+            android:background="@drawable/buttonshape_a"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
@@ -42,7 +48,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="419dp"
         android:layout_marginEnd="-2dp"
         android:fontFamily="@font/alfa_slab_one"
         android:shadowColor="@android:color/black"
@@ -51,7 +57,8 @@
         android:shadowRadius="10"
         android:text="Orkiestra Dęta GŁOWNO"
         android:textAlignment="center"
-        android:textColorHighlight="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+
+        android:textColor="#2923a9"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
 </RelativeLayout>

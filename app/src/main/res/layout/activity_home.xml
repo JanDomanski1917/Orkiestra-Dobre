@@ -21,13 +21,13 @@
         android:layout_marginTop="415dp"
         android:layout_marginEnd="14dp"
         android:fontFamily="@font/alfa_slab_one"
-        android:shadowColor="@android:color/black"
+
         android:shadowDx="-2"
         android:shadowDy="2"
         android:shadowRadius="10"
         android:text="Orkiestra Dęta GŁOWNO"
         android:textAlignment="center"
-        android:textColorHighlight="@android:color/black"
+        android:textColor="#2923a9"
         android:textSize="20sp"
         android:textStyle="bold|italic"/>
 
@@ -50,6 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FEFFF7"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_a"
             android:text="Wyloguj"/>
 
         <Button
@@ -58,6 +61,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FEFFF7"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_a"
             android:text="Spotkania"/>
     </LinearLayout>
 
@@ -80,6 +86,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FEFFF7"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_a"
             android:text="Kalendarz"/>
 
         <Button
@@ -88,6 +97,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:textColor="#FEFFF7"
+            android:textSize="20sp"
+            android:background="@drawable/buttonshape_a"
             android:text="Członkowie"/>
     </LinearLayout>
 </RelativeLayout>
