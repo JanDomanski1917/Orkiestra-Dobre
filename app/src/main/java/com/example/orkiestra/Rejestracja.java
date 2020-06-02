@@ -1,9 +1,12 @@
 package com.example.orkiestra;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,13 +21,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Random;
+
 public class Rejestracja extends AppCompatActivity {
 
     EditText edt_telefon,edt_login, edt_haslo, edt_pin;
     Button btn_rejestruj;
 
     SmsManager smsManager = null;
-    String wiadomosc = "Zalogowano do aplikacji Orkiestra Dęta";
+    Random rand = new Random();
+    int kod1 = rand.nextInt(9999 - 1000 + 1) + 1000;
+    String kod2 = Integer.toString(kod1);
+    String wiadomosc = "Proces tworzenia konta w aplikacji Orkiestra Dęta." +
+                        "Podaj kod aktywacyjny i zacznij korzystać z aplikacji." + kod2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +71,10 @@ public class Rejestracja extends AppCompatActivity {
                                 User user = new User(edt_login.getText().toString(), edt_haslo.getText().toString(), edt_pin.getText().toString());
                                 table_user.child(edt_telefon.getText().toString()).setValue(user);
                                 smsManager = SmsManager.getDefault();
-                                smsManager.sendTextMessage(edt_telefon.getText().toString(),null,wiadomosc,null,null);
+                                smsManager.sendTextMessage(user.getTel(),null,wiadomosc,null,null);
+
+                                aktywacja();
+
                                 Toast.makeText(Rejestracja.this, "Gotowe", Toast.LENGTH_SHORT).show();
                                 finish();
                                 Intent homeIntent = new Intent(Rejestracja.this, Home.class);
@@ -79,5 +92,37 @@ public class Rejestracja extends AppCompatActivity {
             }
 
         });
+    }
+    private void aktywacja() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Podaj kod aktywacyjny");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View forgot_view = inflater.inflate(R.layout.cardview_aktywacja, null);
+        builder.setView(forgot_view);
+        builder.setIcon(R.drawable.ic_security_black_24dp);
+
+        final EditText edt_kod3 = (EditText) forgot_view.findViewById(R.id.ed_kod);
+
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (edt_kod3.length() != 0) {
+                    if (kod2.equals(edt_kod3.getText().toString()))
+                        Toast.makeText(Rejestracja.this, "Konto aktywowane", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(Rejestracja.this, "Zły kod!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(Rejestracja.this, "WPROWADZ DANE !", Toast.LENGTH_SHORT).show(); }
+            }
+        });
+
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
     }
 }
